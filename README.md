@@ -32,16 +32,32 @@ apt-get install build-essential rpm		## On Debian/Ubuntu
 yum install rpm-build                   ## On RedHat/CentOS/Fedora
 ```
 
-* Install [SBT](http://www.scala-sbt.org/release/tutorial/Installing-sbt-on-Linux.html) and an appropriate JDK to build Marathon.
+* Install [SBT](http://www.scala-sbt.org/release/tutorial/Installing-sbt-on-Linux.html)
+  and an appropriate JDK to build Marathon.
 
 Building Packages
 -----------------
-* If this is a fresh clone of the repo:
+* If this is a fresh clone of the repo you must checkout Marathon git
+  submodule:
 
-```bash
-git submodule init
-git submodule update
-```
+  ```bash
+  git submodule init
+  git submodule update
+  ```
+
+* Now you must checkout Marathon-UI git submodule:
+
+  ```bash
+  cd marathon
+  git submodule init
+  git submodule update
+  ```
+
+* Go to root directory of marathon-pkg repository:
+
+  ```bash
+  cd ..
+  ```
 
 * (Optional) Checkout the branch of Marathon you'd like to build in the
   `marathon` directory (maintained as a submodule).
@@ -50,7 +66,9 @@ git submodule update
   cd marathon
   git checkout <TAGNAME>
   ```
-(To commit this, `cd` back to the root directory and `git add marathon`. This will update the submodule pointer to that commit.)
+
+(To commit this, `cd` back to the root directory and `git add marathon`.
+ This will update the submodule pointer to that commit.)
 
 * Call the make target appropriate to your platform. Find additional targets in the Makefile.
 
